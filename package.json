@@ -1,0 +1,15 @@
+{
+  "name": "future_interns_task2",
+  "version": "1.0.0",
+  "description": "Mini MERN CRM",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "seed": "node server/seed.js",
+    "start-server": "npm start --prefix server",
+    "start-client": "npm run dev --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
