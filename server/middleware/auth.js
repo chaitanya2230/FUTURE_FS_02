@@ -12,7 +12,7 @@ const fetchGooglePublicKeys = () => {
       return resolve(googlePublicKeys);
     }
 
-    https.get('https://www.googleapis.com/robot/v1/metadata/x509/securetoken-system@system.gserviceaccount.com', (res) => {
+    https.get('https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com', (res) => {
       let data = '';
       
       const cacheControl = res.headers['cache-control'];
