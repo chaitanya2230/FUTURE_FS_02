@@ -38,7 +38,6 @@ const Login = () => {
       }));
 
       navigate('/');
-      window.location.reload();
     } catch (err) {
       console.error(err);
       if (err.code === 'auth/popup-closed-by-user') {
@@ -85,7 +84,6 @@ const Login = () => {
       }));
 
       navigate('/');
-      window.location.reload();
     } catch (err) {
       console.error(err);
       if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential') {
