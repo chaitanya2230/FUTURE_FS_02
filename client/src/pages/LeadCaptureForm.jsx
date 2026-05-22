@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Send, CheckCircle, ArrowLeft, User, Mail, Phone, ExternalLink } from 'lucide-react';
 import { API_ROUTES } from '../utils/api';
 
 const LeadCaptureForm = () => {
@@ -50,92 +50,108 @@ const LeadCaptureForm = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-950 flex flex-col justify-center items-center px-4 overflow-hidden font-sans">
+    <div className="relative min-h-screen bg-black flex flex-col justify-center items-center px-4 overflow-hidden font-sans text-zinc-100">
       {/* Premium blurred light spots for SaaS feel */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-15%] left-[-15%] w-[55%] h-[55%] bg-violet-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[-15%] right-[-15%] w-[55%] h-[55%] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none" />
       
-      {/* Decorative Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b12_1px,transparent_1px),linear-gradient(to_bottom,#1e293b12_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      {/* Tech Grid Mask */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none" />
 
       <div className="w-full max-w-lg z-10">
         {/* Logo and Headings */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-3">
-            <span>Inquiry Portal</span>
+          <div className="inline-flex items-center space-x-2 bg-zinc-900/80 border border-zinc-800/80 px-4.5 py-1.5 rounded-full mb-4 shadow-xl">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-ping" />
+            <span className="text-[10px] text-zinc-300 font-extrabold uppercase tracking-widest">Inquiry Portal Gateway</span>
           </div>
-          <h1 className="text-4xl font-display font-bold text-white tracking-tight">
+          <h1 className="text-3xl font-display font-extrabold text-white tracking-tight sm:text-4xl">
             Connect With Our Team
           </h1>
-          <p className="text-sm text-slate-400 mt-2">
-            Fill out the form below and an agent will reach out shortly.
+          <p className="text-xs text-zinc-400 mt-2.5 max-w-xs mx-auto leading-relaxed">
+            Fill out your details below and a client partner will reach out to schedule a consultation.
           </p>
         </div>
 
         {/* Card Body */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl shadow-2xl p-8 sm:p-10 transition-all duration-300">
+        <div className="bg-zinc-950/60 backdrop-blur-xl border border-zinc-900 shadow-[0_4px_30px_rgba(0,0,0,0.8)] rounded-2xl p-8 sm:p-10 transition-all duration-300">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-5">
               {error && (
-                <div className="p-3.5 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-lg text-center font-medium">
+                <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold rounded-lg text-center leading-relaxed">
                   {error}
                 </div>
               )}
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Full Name *
+                <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-1.5">
+                  Full Representative Name *
                 </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Sarah Connor"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/80 transition-all"
-                />
+                <div className="relative rounded-lg shadow-sm">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <User className="h-4 w-4 text-zinc-650" />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. John Doe"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 bg-black border border-zinc-800 rounded-lg text-white placeholder-zinc-600 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500/80 transition-all"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Email Address *
+                <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-1.5">
+                  Business Mail Address *
                 </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="e.g. sarah@cyberdyne.co"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/80 transition-all"
-                />
+                <div className="relative rounded-lg shadow-sm">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Mail className="h-4 w-4 text-zinc-650" />
+                  </div>
+                  <input
+                    type="email"
+                    required
+                    placeholder="e.g. john@company.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 bg-black border border-zinc-800 rounded-lg text-white placeholder-zinc-600 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500/80 transition-all"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Phone Number
+                <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-1.5">
+                  Telephone Contact
                 </label>
-                <input
-                  type="text"
-                  placeholder="e.g. +1 (555) 019-2831"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/80 transition-all"
-                />
+                <div className="relative rounded-lg shadow-sm">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Phone className="h-4 w-4 text-zinc-650" />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="e.g. +1 (555) 019-2831"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 bg-black border border-zinc-800 rounded-lg text-white placeholder-zinc-600 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500/80 transition-all"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Inquiry Source / Event
+                <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-1.5">
+                  Discovery Channel
                 </label>
                 <select
                   value={source}
                   onChange={(e) => setSource(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/80 transition-all bg-no-repeat cursor-pointer"
+                  className="w-full px-3 py-3 bg-black border border-zinc-800 rounded-lg text-zinc-300 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500/80 transition-all cursor-pointer font-medium"
                 >
-                  <option value="Website" className="bg-slate-950 text-white">Website Landing Form</option>
-                  <option value="LinkedIn" className="bg-slate-950 text-white">LinkedIn Ad</option>
-                  <option value="Advertisement" className="bg-slate-950 text-white">Search Advertisement</option>
-                  <option value="Referral" className="bg-slate-950 text-white">Friend/Colleague Referral</option>
+                  <option value="Website">Website Form Submission</option>
+                  <option value="LinkedIn">LinkedIn Social Network</option>
+                  <option value="Advertisement">Search Engine Advertisement</option>
+                  <option value="Referral">Client/Partner Referral</option>
                 </select>
               </div>
 
@@ -143,13 +159,13 @@ const LeadCaptureForm = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex justify-center items-center space-x-2 py-3.5 px-4 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white text-sm font-semibold rounded-lg shadow-lg hover:shadow-indigo-500/10 transition-all duration-150 cursor-pointer disabled:opacity-50"
+                  className="w-full flex justify-center items-center space-x-2 py-3.5 px-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white text-sm font-semibold rounded-lg shadow-lg hover:shadow-violet-500/10 active:scale-95 transition-all duration-150 cursor-pointer disabled:opacity-50"
                 >
                   {loading ? (
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                   ) : (
                     <>
-                      <span>Submit Inquiry</span>
+                      <span>Transmit Request</span>
                       <Send className="h-4 w-4" />
                     </>
                   )}
@@ -157,16 +173,16 @@ const LeadCaptureForm = () => {
               </div>
             </form>
           ) : (
-            /* Premium Success State with Animation */
+            /* Premium Success State */
             <div className="text-center py-6 flex flex-col items-center">
-              <div className="h-16 w-16 bg-green-500/10 text-green-400 rounded-full flex items-center justify-center border border-green-500/20 shadow-lg mb-5 animate-bounce">
+              <div className="h-16 w-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center border border-emerald-500/20 shadow-lg shadow-emerald-500/5 mb-5 animate-bounce">
                 <CheckCircle className="h-8 w-8" />
               </div>
-              <h2 className="text-2xl font-display font-bold text-white mb-2">
-                Thank You!
+              <h2 className="text-2xl font-display font-extrabold text-white mb-2 tracking-wide">
+                Transmission Successful
               </h2>
-              <p className="text-sm text-slate-400 leading-relaxed max-w-xs mx-auto">
-                Your inquiry has been successfully captured. Our account executives will review the request and get in touch with you shortly.
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs mx-auto font-medium">
+                Your pipeline request has been securely parsed into MongoDB. An administrator has been alerted and will establish communications with you shortly.
               </p>
               <button
                 onClick={() => {
@@ -175,7 +191,7 @@ const LeadCaptureForm = () => {
                   setPhone('');
                   setSubmitted(false);
                 }}
-                className="mt-8 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors uppercase tracking-wider flex items-center space-x-1.5 cursor-pointer"
+                className="mt-8 text-[10px] font-extrabold text-violet-400 hover:text-violet-300 transition-colors uppercase tracking-widest flex items-center space-x-1.5 cursor-pointer"
               >
                 <span>Submit Another Response</span>
               </button>
@@ -187,10 +203,10 @@ const LeadCaptureForm = () => {
         <div className="text-center mt-6">
           <a
             href="/login"
-            className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-300 transition-colors text-xs font-semibold"
+            className="inline-flex items-center space-x-1.5 text-zinc-500 hover:text-zinc-300 transition-colors text-xs font-semibold"
           >
             <ArrowLeft className="h-3 w-3" />
-            <span>Go to Admin Portal</span>
+            <span>Return to Admin CRM Portal</span>
           </a>
         </div>
       </div>
