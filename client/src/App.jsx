@@ -33,10 +33,10 @@ function App() {
           console.error("Error retrieving Firebase ID token:", err);
         }
       } else {
-        // If there's no Firebase user, check if there's a legacy token before setting unauthorized
-        if (!localStorage.getItem('token')) {
-          setIsAuthenticated(false);
-        }
+        // If there's no Firebase user, clear the localStorage tokens to keep consistent
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setIsAuthenticated(false);
       }
       setLoading(false);
     });
@@ -57,7 +57,7 @@ function App() {
       <Routes>
         <Route 
           path="/login" 
-          element={isAuthenticated ? <Navigate to="/" replace /> : <Login />} 
+          element={localStorage.getItem('token') ? <Navigate to="/" replace /> : <Login />} 
         />
         <Route path="/lead-form" element={<LeadCaptureForm />} />
         <Route 
